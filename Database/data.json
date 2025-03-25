@@ -1,0 +1,347 @@
+{
+  "diet_namkeen": [
+    {
+      "id": "1",
+      "name": "Halka Fulka",
+      "price": 90,
+      "oldPrice": 121,
+      "img": "https://www.hungrytummy.co/cdn/shop/files/15.jpg?v=1714556017&width=533"
+    },
+    {
+      "id": "2",
+      "name": "Bhel Puri",
+      "price": 110,
+      "oldPrice": 148,
+      "img": "https://www.hungrytummy.co/cdn/shop/files/11.jpg?v=1714554932&width=533"
+    },
+    {
+      "id": "3",
+      "name": "Roasted Wheate Puff",
+      "price": 80,
+      "oldPrice": 108,
+      "img": "https://www.hungrytummy.co/cdn/shop/files/11_374d1a2a-e1c1-4311-a442-1290aa12dea3.jpg?v=1714555442&width=533"
+    },
+    {
+      "id": "4",
+      "name": "Chiwra Diet",
+      "price": 90,
+      "oldPrice": 121,
+      "img": "https://www.hungrytummy.co/cdn/shop/files/13.jpg?v=1714555641&width=533"
+    },
+    {
+      "id": "5",
+      "name": "Gujarati Diet Mix ",
+      "price": 90,
+      "oldPrice": 121,
+      "img": "https://www.hungrytummy.co/cdn/shop/files/14.jpg?v=1714555842&width=533"
+    },
+    {
+      "id": "6",
+      "name": "Roasted Moong",
+      "price": 140,
+      "oldPrice": 190,
+      "img": "https://www.hungrytummy.co/cdn/shop/files/87.jpg?v=1717049260&width=533"
+    },
+    {
+      "id": "7",
+      "name": "All in One",
+      "price": 100,
+      "oldPrice": 135,
+      "img": "https://www.hungrytummy.co/cdn/shop/files/1.jpg?v=1714482387&width=360"
+    },
+    {
+      "id": "8",
+      "name": "Roasted Moth",
+      "price": 140,
+      "oldPrice": 190,
+      "img": "https://www.hungrytummy.co/cdn/shop/files/89.jpg?v=1717050059&width=533"
+    },
+    {
+      "id": "9",
+      "name": "Rich Diet Mix",
+      "price": 80,
+      "oldPrice": 108,
+      "img": "https://www.hungrytummy.co/cdn/shop/files/3.jpg?v=1714482791&width=533"
+    },
+    {
+      "id": "10",
+      "name": "Classic Quinoa Masala",
+      "price": 120,
+      "oldPrice": 162,
+      "img": "https://www.hungrytummy.co/cdn/shop/files/6.jpg?v=1714553317&width=360"
+    },
+    {
+      "id": "11",
+      "name": "Bhel Puff",
+      "price": 100,
+      "oldPrice": 135,
+      "img": "https://www.hungrytummy.co/cdn/shop/files/95.jpg?v=1717056417&width=533"
+    }
+  ],
+  "biscuits": [
+    {
+      "id": "12",
+      "name": "Badam Pista Cookies",
+      "price": 160,
+      "oldPrice": 189,
+      "img": "https://www.hungrytummy.co/cdn/shop/files/53.jpg?v=1714568675&width=533"
+    },
+    {
+      "id": "13",
+      "name": "Badam Pista Finger",
+      "price": 160,
+      "oldPrice": 189,
+      "img": "https://www.hungrytummy.co/cdn/shop/files/52.jpg?v=1714568716&width=533"
+    },
+    {
+      "id": "14",
+      "name": "Kaju Pista Cookies",
+      "price": 160,
+      "oldPrice": 189,
+      "img": "https://www.hungrytummy.co/cdn/shop/files/49.jpg?v=1714569549&width=360"
+    },
+    {
+      "id": "15",
+      "name": "Tutti Frutti Cookies",
+      "price": 150,
+      "oldPrice": 189,
+      "img": "https://www.hungrytummy.co/cdn/shop/files/55.jpg?v=1714569923&width=533"
+    },
+    {
+      "id": "16",
+      "name": "Kesar Nankhatai",
+      "price": 150,
+      "oldPrice": 189,
+      "img": "https://www.hungrytummy.co/cdn/shop/files/65.jpg?v=1714569601&width=360"
+    },
+    {
+      "id": "17",
+      "name": "Peri Peri Mini Rusk",
+      "price": 140,
+      "oldPrice": 180,
+      "img": "https://www.hungrytummy.co/cdn/shop/files/Peri_Peri.png?v=1726649160&width=360"
+    },
+    {
+      "id": "18",
+      "name": "Cashew Cookies",
+      "price": 200,
+      "oldPrice": 202,
+      "img": "https://www.hungrytummy.co/cdn/shop/files/50.jpg?v=1714569485&width=360"
+    },
+    {
+      "id": "19",
+      "name": "Cake Rusk Cookies",
+      "price": 150,
+      "oldPrice": 189,
+      "img": "https://www.hungrytummy.co/cdn/shop/files/62.jpg?v=1714569152&width=360"
+    },
+    {
+      "id": "20",
+      "name": "Atta Patti Cookies",
+      "price": 150,
+      "oldPrice": 189,
+      "img": "https://www.hungrytummy.co/cdn/shop/files/61.jpg?v=1714568634&width=360"
+    },
+    {
+      "id": "21",
+      "name": "Coconut Cookies",
+      "price": 160,
+      "oldPrice": 189,
+      "img": "https://www.hungrytummy.co/cdn/shop/files/64.jpg?v=1714569324&width=360"
+    }
+  ],
+  "diet_Chips": [
+    {
+      "id": "22",
+      "name": "HT Beetroot Chips",
+      "price": 150,
+      "oldPrice": 200,
+      "img": "https://www.hungrytummy.co/cdn/shop/files/37.jpg?v=1714561496&width=533"
+    },
+    {
+      "id": "23",
+      "name": "HT Ragi Chips",
+      "price": 150,
+      "oldPrice": 200,
+      "img": "https://www.hungrytummy.co/cdn/shop/files/45.jpg?v=1714561784&width=533"
+    },
+    {
+      "id": "24",
+      "name": "HT Soya Chips",
+      "price": 150,
+      "oldPrice": 200,
+      "img": "https://www.hungrytummy.co/cdn/shop/files/41.jpg?v=1714561868&width=533"
+    },
+    {
+      "id": "25",
+      "name": "HT Brown Rice Chips",
+      "price": 150,
+      "oldPrice": 200,
+      "img": "https://www.hungrytummy.co/cdn/shop/files/40.jpg?v=1714561587&width=533"
+    },
+    {
+      "id": "26",
+      "name": "HT Moong Chips",
+      "price": 150,
+      "oldPrice": 200,
+      "img": "https://www.hungrytummy.co/cdn/shop/files/39.jpg?v=1714561626&width=1066"
+    },
+    {
+      "id": "27",
+      "name": "HT Oats Chips",
+      "price": 150,
+      "oldPrice": 200,
+      "img": "https://www.hungrytummy.co/cdn/shop/files/44.jpg?v=1714561676&width=1066"
+    },
+    {
+      "id": "28",
+      "name": "HT Quinoa Chips",
+      "price": 150,
+      "oldPrice": 200,
+      "img": "https://www.hungrytummy.co/cdn/shop/files/38.jpg?v=1714561732&width=533"
+    },
+    {
+      "id": "29",
+      "name": "HT Rajma Chips",
+      "price": 150,
+      "oldPrice": 200,
+      "img": "https://www.hungrytummy.co/cdn/shop/files/42.jpg?v=1714561827&width=1066"
+    },
+    {
+      "id": "30",
+      "name": "HT Black Chickpeas Chips",
+      "price": 150,
+      "oldPrice": 200,
+      "img": "https://www.hungrytummy.co/cdn/shop/files/43.jpg?v=1714561538&width=1066"
+    }
+  ],
+  "namkeen": [
+    {
+      "id": "31",
+      "name": "Gud Chana",
+      "price": 100,
+      "oldPrice": 150,
+      "img": "https://www.hungrytummy.co/cdn/shop/files/31.jpg?v=1714560266&width=533"
+    },
+    {
+      "id": "32",
+      "name": "Chana Jor Garam",
+      "price": 75,
+      "oldPrice": 101,
+      "img": "https://www.hungrytummy.co/cdn/shop/files/25.jpg?v=1714559929&width=533"
+    },
+    {
+      "id": "33",
+      "name": "Dal Biji",
+      "price": 90,
+      "oldPrice": 121,
+      "img": "https://www.hungrytummy.co/cdn/shop/files/26.jpg?v=1714559981&width=533"
+    },
+    {
+      "id": "34",
+      "name": "Roasted Hing Chana",
+      "price": 80,
+      "oldPrice": 100,
+      "img": "https://www.hungrytummy.co/cdn/shop/files/30.jpg?v=1714560208&width=533"
+    },
+    {
+      "id": "35",
+      "name": "Hing Mixture",
+      "price": 90,
+      "oldPrice": 121,
+      "img": "https://www.hungrytummy.co/cdn/shop/files/27.jpg?v=1714560034&width=1066"
+    },
+    {
+      "id": "36",
+      "name": "Hing Peanut",
+      "price": 100,
+      "oldPrice": 135,
+      "img": "https://www.hungrytummy.co/cdn/shop/files/28.jpg?v=1714560084&width=1066"
+    },
+    {
+      "id": "37",
+      "name": "Moong Bhujia",
+      "price": 99,
+      "oldPrice": 135,
+      "img": "https://www.hungrytummy.co/cdn/shop/files/33.jpg?v=1714560313&width=533"
+    },
+    {
+      "id": "38",
+      "name": "Aloo Chips Falhari",
+      "price": 100,
+      "oldPrice": 135,
+      "img": "https://www.hungrytummy.co/cdn/shop/files/16.jpg?v=1714556849&width=1066"
+    },
+    {
+      "id": "39",
+      "name": "Besan Gathiya",
+      "price": 85,
+      "oldPrice": 114,
+      "img": "https://www.hungrytummy.co/cdn/shop/files/22.jpg?v=1714558099&width=533"
+    },
+    {
+      "id": "40",
+      "name": "Besan Papdi",
+      "price": 100,
+      "oldPrice": 135,
+      "img": "https://www.hungrytummy.co/cdn/shop/files/19.jpg?v=1714557455&width=1066"
+    }
+  ],
+  "makhana": [
+    {
+      "id": "41",
+      "name": "Falhari Makhana",
+      "price": 180,
+      "oldPrice": 229,
+      "img": "https://www.hungrytummy.co/cdn/shop/files/34.jpg?v=1714560903&width=533"
+    },
+    {
+      "id": "42",
+      "name": "Mint Makhana",
+      "price": 180,
+      "oldPrice": 229,
+      "img": "https://www.hungrytummy.co/cdn/shop/files/35.jpg?v=1714560769&width=533"
+    },
+    {
+      "id": "43",
+      "name": "Tomato Makhana",
+      "price": 180,
+      "oldPrice": 229,
+      "img": "https://www.hungrytummy.co/cdn/shop/files/36.jpg?v=1714560855&width=533"
+    }
+  ],
+  "cart": [
+    {
+      "id": 45,
+      "name": "Dry Fruits Cookies",
+      "price": 499,
+      "oldPrice": 549,
+      "img": "https://www.hungrytummy.co/cdn/shop/files/All_Time_Best_Cookies.jpg?v=1732692523&width=720",
+      "qty": 1
+    },
+    {
+      "id": 62,
+      "name": "Flavouro Makhana",
+      "price": 399,
+      "oldPrice": 499,
+      "img": "https://www.hungrytummy.co/cdn/shop/files/FlavourofMakhana.jpg?v=1732361765&width=720",
+      "qty": 1
+    },
+    {
+      "id": 46,
+      "name": "variety of Chips",
+      "price": 649,
+      "oldPrice": 699,
+      "img": "https://www.hungrytummy.co/cdn/shop/files/Chatpati-Namkeen_289948a9-1970-450e-a725-401ef0bcc858.jpg?v=1738237539&width=720",
+      "qty": 1
+    },
+    {
+      "id": 44,
+      "name": "Chana Party (High Protein)",
+      "price": 249,
+      "oldPrice": 299,
+      "img": "https://www.hungrytummy.co/cdn/shop/files/Chana-Party.jpg?v=1738225096&width=720",
+      "qty": 1
+    }
+  ]
+}
