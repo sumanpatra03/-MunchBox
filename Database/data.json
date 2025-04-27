@@ -310,38 +310,5 @@
       "img": "https://www.hungrytummy.co/cdn/shop/files/36.jpg?v=1714560855&width=533"
     }
   ],
-  "cart": [
-    {
-      "id": 45,
-      "name": "Dry Fruits Cookies",
-      "price": 499,
-      "oldPrice": 549,
-      "img": "https://www.hungrytummy.co/cdn/shop/files/All_Time_Best_Cookies.jpg?v=1732692523&width=720",
-      "qty": 1
-    },
-    {
-      "id": 62,
-      "name": "Flavouro Makhana",
-      "price": 399,
-      "oldPrice": 499,
-      "img": "https://www.hungrytummy.co/cdn/shop/files/FlavourofMakhana.jpg?v=1732361765&width=720",
-      "qty": 1
-    },
-    {
-      "id": 46,
-      "name": "variety of Chips",
-      "price": 649,
-      "oldPrice": 699,
-      "img": "https://www.hungrytummy.co/cdn/shop/files/Chatpati-Namkeen_289948a9-1970-450e-a725-401ef0bcc858.jpg?v=1738237539&width=720",
-      "qty": 1
-    },
-    {
-      "id": 44,
-      "name": "Chana Party (High Protein)",
-      "price": 249,
-      "oldPrice": 299,
-      "img": "https://www.hungrytummy.co/cdn/shop/files/Chana-Party.jpg?v=1738225096&width=720",
-      "qty": 1
-    }
-  ]
+  "cart": []
 }

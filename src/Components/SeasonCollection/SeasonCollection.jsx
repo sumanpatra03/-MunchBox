@@ -73,7 +73,7 @@ const SeasonCollection = () => {
               key={index}
               sx={{
                 padding: 2,
-                // background: "#f0f0c9",
+                background: "#f0f0c9",
                 borderRadius: "10px",
                 textAlign: "center",
                 position: "relative",

@@ -11,64 +11,64 @@ const products = [
   {
     id: 54,
     title: "Tutti Frutti Cookies",
-    price: " 150.00",
-    oldPrice: " 189.00",
+    price: 150.00,
+    oldPrice: 189.00,
     image:
       "https://www.hungrytummy.co/cdn/shop/files/34.jpg?v=1714560903&width=720",
   },
   {
     id: 55,
     title: "Jeera Cookies",
-    price: " 150.00",
-    oldPrice: " 189.00",
+    price: 150.00,
+    oldPrice: 189.00,
     image:
       "https://www.hungrytummy.co/cdn/shop/files/32.jpg?v=1714560375&width=533",
   },
   {
     id: 56,
     title: "Jeera Cookies",
-    price: " 150.00",
-    oldPrice: " 189.00",
+    price: 150.00,
+    oldPrice: 189.00,
     image:
       "https://www.hungrytummy.co/cdn/shop/files/35.jpg?v=1714560769&width=720",
   },
   {
     id: 57,
     title: "Jeera Cookies",
-    price: " 150.00",
-    oldPrice: " 189.00",
+    price: 150.00,
+    oldPrice: 189.00,
     image:
       "https://www.hungrytummy.co/cdn/shop/files/11_374d1a2a-e1c1-4311-a442-1290aa12dea3.jpg?v=1714555442&width=533",
   },
   {
     id: 58,
     title: "Jeera Cookies",
-    price: " 150.00",
-    oldPrice: " 189.00",
+    price: 150.00,
+    oldPrice: 189.00,
     image:
       "https://www.hungrytummy.co/cdn/shop/files/13.jpg?v=1714555641&width=533",
   },
   {
     id: 59,
     title: "Jeera Cookies",
-    price: " 150.00",
-    oldPrice: " 189.00",
+    price: 150.00,
+    oldPrice: 189.00,
     image:
       "https://www.hungrytummy.co/cdn/shop/files/87.jpg?v=1717049260&width=533",
   },
   {
     id: 60,
     title: "Jeera Cookies",
-    price: " 150.00",
-    oldPrice: " 189.00",
+    price: 150.00,
+    oldPrice: 189.00,
     image:
       "https://www.hungrytummy.co/cdn/shop/files/36.jpg?v=1714560855&width=720",
   },
   {
     id: 61,
     title: "Jeera Cookies",
-    price: " 150.00",
-    oldPrice: " 189.00",
+    price: 150.00,
+    oldPrice: 189.00,
     image:
       "https://www.hungrytummy.co/cdn/shop/files/1.jpg?v=1714482387&width=533",
   },

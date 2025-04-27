@@ -34,7 +34,7 @@ const footerLinks = [
     title: "Our Store",
     links: [
       "Find a location nearest you. See Our Stores",
-      "+91 7417438052",
+      "+91 9734127642",
       "info@munchbox.co",
     ],
   },
