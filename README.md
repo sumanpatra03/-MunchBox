@@ -1,70 +1,66 @@
-# Getting Started with Create React App
+MunchBox - E-commerce Web App
+MunchBox is an e-commerce web application built using React.js, MUI (Material-UI), Redux Toolkit, and Supabase. It allows users to browse products, add them to the cart, and proceed with the checkout process. The app features dynamic product pages, cart functionality, and a modern design, providing a seamless shopping experience.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+🚀 Features
+1. Product Carousel
+A carousel of products displayed on the homepage with interactive features.
 
-## Available Scripts
+Users can view products, add them to the cart, and view detailed information.
 
-In the project directory, you can run:
+2. Cart Functionality
+Add products to the cart by clicking on them.
 
-### `npm start`
+Display cart details, including the product name, quantity, and price.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Update product quantities and remove items from the cart.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Calculate the total amount and apply discounts.
 
-### `npm test`
+3. Product Categories
+Users can filter products based on categories.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Dynamic pages are created for different product categories, allowing users to view all products within a specific category.
 
-### `npm run build`
+4. Checkout Process
+Integrate the entire checkout process, including order summary, payment details, and order completion.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+User can proceed with the payment directly from the cart page.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+5. Responsive Design
+The website adapts to different screen sizes, ensuring that it works well on both desktop and mobile devices.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+6. Authentication (Future Features)
+Future implementation of user login/signup functionality for order tracking and profile management.
 
-### `npm run eject`
+🛠️ Technologies Used
+React.js: Front-end JavaScript library for building the user interface and managing state.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+MUI (Material-UI): A React UI framework for building modern, responsive components.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Redux Toolkit: For state management, particularly for cart functionality.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Supabase: For the  backend to manage product and cart data and login .
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+React Router: For navigation and routing between pages.
 
-## Learn More
+React Icons: For adding icons in the UI (like add to cart, delete, etc.).
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+🏗️ Project Setup
+1. Clone the Repository
+Clone the repository to your local machine:
 
-### Code Splitting
+bash
+Copy
+Edit
+git clone https://github.com/sumanpatra03/-MunchBox
+cd munchbox
+2. Install Dependencies
+Install the required dependencies by running the following command:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+bash
+Copy
+Edit
+npm install
+# or
+yarn install
