@@ -16,35 +16,48 @@ import {
   Button,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { axiosInstance } from "../../api/axiosInstance";
+
 import Navbar from "../../Components/Navbar/Navbar";
 import Footer from "../../Components/Footer/Footer";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import { FavoriteBorder, ShoppingBag, Visibility } from "@mui/icons-material";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addCart } from "../../Redux/Slice/AuthSlice";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { fetchProducts } from "../../Redux/Slice/ProductSlice";
 
 const CategoryPage = () => {
   const dispatch = useDispatch();
   const { categoryName } = useParams();
   const [items, setItems] = useState([]);
-  // const [priceRange, setPriceRange] = useState([0, 200]);
+
+  const { products } = useSelector((state) => state.products);
 
   useEffect(() => {
-    axiosInstance
-      .get(categoryName)
-      .then((res) => {
-        setItems(res.data);
-        console.log("Product fetched:", res.data);
-        toast.success("Products loaded successfully");
-      })
-      .catch((err) => {
-        console.error("Fetch data error", err);
-        toast.error("Failed to load products");
-      });
-  }, [categoryName]);
+    dispatch(fetchProducts(categoryName));
+  }, [dispatch, categoryName]);
+  useEffect(() => {
+    if (products && products.length > 0) {
+      setItems(products); // Set the fetched products to the items state
+    }
+  }, [products]);
+
+  // const [priceRange, setPriceRange] = useState([0, 200]);
+
+  // useEffect(() => {
+  //   axiosInstance
+  //     .get(categoryName)
+  //     .then((res) => {
+  //       setItems(res.data);
+  //       console.log("Product fetched:", res.data);
+  //       toast.success("Products loaded successfully");
+  //     })
+  //     .catch((err) => {
+  //       console.error("Fetch data error", err);
+  //       toast.error("Failed to load products");
+  //     });
+  // }, [categoryName]);
 
   // const handlePriceChange = (event, newValue) => {
   //   setPriceRange(newValue);
@@ -267,7 +280,7 @@ const CategoryPage = () => {
                         color="text.secondary"
                         sx={{ textDecoration: "line-through" }}
                       >
-                        ₹ {product.oldPrice}
+                        ₹ {product.oldprice}
                       </Typography>
                     </Box>
                   </Box>

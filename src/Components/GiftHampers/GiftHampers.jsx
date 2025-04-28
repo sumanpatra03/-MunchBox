@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Slider from "react-slick";
 import {
   Box,
@@ -11,69 +11,23 @@ import {
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { FavoriteBorder, Visibility } from "@mui/icons-material";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addCart } from "../../Redux/Slice/AuthSlice";
-
-const products = [
-  {
-    id: 44,
-    name: "Chana Party (High Protein)",
-    price: 249.00,
-    oldPrice: 299.00,
-    img:
-      "https://www.hungrytummy.co/cdn/shop/files/Chana-Party.jpg?v=1738225096&width=720",
-    
-  },
-  {
-    id: 45,
-    name: "Dry Fruits Cookies",
-    price: 499.00,
-    oldPrice: 549.00,
-    img:
-      "https://www.hungrytummy.co/cdn/shop/files/All_Time_Best_Cookies.jpg?v=1732692523&width=720",
-  },
-  {
-    id: 62,
-    name: "Flavouro Makhana",
-    price: 399.00,
-    oldPrice: 499.00,
-    img:
-      "https://www.hungrytummy.co/cdn/shop/files/FlavourofMakhana.jpg?v=1732361765&width=720",
-    
-  },
-  {
-    id: 46,
-    name: "variety of Chips",
-    price: 649.00,
-    oldPrice: 699.00,
-    img:
-      "https://www.hungrytummy.co/cdn/shop/files/Chatpati-Namkeen_289948a9-1970-450e-a725-401ef0bcc858.jpg?v=1738237539&width=720",
-    
-  },
-  {
-    id: 47,
-    name: "Chatpati Namkeen",
-    price: 649.00,
-    oldPrice: 699.00,
-    img:
-      "https://www.hungrytummy.co/cdn/shop/files/Chatpati-Namkeen.jpg?v=1738226343&width=720",
-  },
-  {
-    id: 48,
-    name: "Dry Fruits Cookies",
-    price: 649.00,
-    oldPrice: 699.00,
-    img:
-      "https://www.hungrytummy.co/cdn/shop/files/QualityofSev.jpg?v=1732362155&width=720",
-  },
-];
+import { fetchProducts } from "../../Redux/Slice/ProductSlice";
 
 const GiftHampers = () => {
   const dispatch = useDispatch();
+  const { products, isLoading, error } = useSelector((state) => state.products);
+
+  useEffect(() => {
+    dispatch(fetchProducts("gift_hampers"));
+  }, [dispatch]);
 
   const handleAddToCart = (product) => {
     dispatch(addCart(product));
   };
+
+  // console.log("Gift Hampers Data",products)
 
   const settings = {
     dots: true,
@@ -106,6 +60,14 @@ const GiftHampers = () => {
       },
     ],
   };
+
+  if (isLoading) {
+    return <div>loading......</div>;
+  }
+
+  if (error) {
+    return <p>error.....</p>;
+  }
 
   return (
     <Box sx={{ textAlign: "center", py: 5 }}>
@@ -213,7 +175,7 @@ const GiftHampers = () => {
                     color="text.secondary"
                     sx={{ textDecoration: "line-through" }}
                   >
-                    ₹ {product.oldPrice}
+                    ₹ {product.oldprice}
                   </Typography>
                 </Box>
                 <Button

@@ -1,85 +1,30 @@
 import { FavoriteBorder, Visibility, ShoppingBag } from "@mui/icons-material";
 import { Box, IconButton, Typography } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addCart } from "../../Redux/Slice/AuthSlice";
+import { fetchProducts } from "../../Redux/Slice/ProductSlice";
 
-const products = [
-  {
-    id: 54,
-    title: "Tutti Frutti Cookies",
-    price: 150.00,
-    oldPrice: 189.00,
-    image:
-      "https://www.hungrytummy.co/cdn/shop/files/34.jpg?v=1714560903&width=720",
-  },
-  {
-    id: 55,
-    title: "Jeera Cookies",
-    price: 150.00,
-    oldPrice: 189.00,
-    image:
-      "https://www.hungrytummy.co/cdn/shop/files/32.jpg?v=1714560375&width=533",
-  },
-  {
-    id: 56,
-    title: "Jeera Cookies",
-    price: 150.00,
-    oldPrice: 189.00,
-    image:
-      "https://www.hungrytummy.co/cdn/shop/files/35.jpg?v=1714560769&width=720",
-  },
-  {
-    id: 57,
-    title: "Jeera Cookies",
-    price: 150.00,
-    oldPrice: 189.00,
-    image:
-      "https://www.hungrytummy.co/cdn/shop/files/11_374d1a2a-e1c1-4311-a442-1290aa12dea3.jpg?v=1714555442&width=533",
-  },
-  {
-    id: 58,
-    title: "Jeera Cookies",
-    price: 150.00,
-    oldPrice: 189.00,
-    image:
-      "https://www.hungrytummy.co/cdn/shop/files/13.jpg?v=1714555641&width=533",
-  },
-  {
-    id: 59,
-    title: "Jeera Cookies",
-    price: 150.00,
-    oldPrice: 189.00,
-    image:
-      "https://www.hungrytummy.co/cdn/shop/files/87.jpg?v=1717049260&width=533",
-  },
-  {
-    id: 60,
-    title: "Jeera Cookies",
-    price: 150.00,
-    oldPrice: 189.00,
-    image:
-      "https://www.hungrytummy.co/cdn/shop/files/36.jpg?v=1714560855&width=720",
-  },
-  {
-    id: 61,
-    title: "Jeera Cookies",
-    price: 150.00,
-    oldPrice: 189.00,
-    image:
-      "https://www.hungrytummy.co/cdn/shop/files/1.jpg?v=1714482387&width=533",
-  },
-];
+
 
 const SnacksSection = () => {
   const dispatch = useDispatch();
 
+  const { products } = useSelector((state) => state.products);
+
+  useEffect(() => {
+    dispatch(fetchProducts("snacks_section"));
+  }, [dispatch]);
+
   const handleAddToCart = (product) => {
     dispatch(addCart(product));
+    console.log(product)
   };
+
+  // console.log("Rosted Snacks Section",products)
 
   const settings = {
     dots: true,
@@ -134,8 +79,8 @@ const SnacksSection = () => {
               >
                 <Box
                   component="img"
-                  src={product.image}
-                  alt={product.title}
+                  src={product.img}
+                  alt={product.name}
                   sx={{
                     width: "100%",
                     maxHeight: "500px",
@@ -193,9 +138,9 @@ const SnacksSection = () => {
                 </Box>
               </Box>
 
-              {/* Product Info */}
+              
               <Typography variant="h6" fontWeight="bold" mb={1} mt={2}>
-                {product.title}
+                {product.name}
               </Typography>
               <Box sx={{ display: "flex", justifyContent: "center", gap: 1 }}>
                 <Typography variant="body1" fontWeight="bold">
@@ -206,7 +151,7 @@ const SnacksSection = () => {
                   color="text.secondary"
                   sx={{ textDecoration: "line-through" }}
                 >
-                  ₹ {product.oldPrice}
+                  ₹ {product.oldprice}
                 </Typography>
               </Box>
             </Box>

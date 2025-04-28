@@ -1,54 +1,28 @@
 import { FavoriteBorder, Visibility } from "@mui/icons-material";
 import { Box, IconButton, Typography } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchProducts } from "../../Redux/Slice/ProductSlice";
 
-const products = [
-  {
-    id: 49,
-    name: "Tutti Frutti Cookies",
-    price: 150.00,
-    oldPrice: 189.00,
-    img:
-      "https://www.hungrytummy.co/cdn/shop/files/55.jpg?v=1714569923&width=720",
-  },
-  {
-    id: 50,
-    name: "Jeera Cookies",
-    price: 150.00,
-    oldPrice: 189.00,
-    img:
-      "https://www.hungrytummy.co/cdn/shop/files/57.jpg?v=1714569383&width=720",
-  },
-  {
-    id: 51,
-    name: "Besan Gathiya",
-    price: 89.00,
-    oldPrice: 114.00,
-    img:
-      "https://www.hungrytummy.co/cdn/shop/files/22.jpg?v=1714558099&width=720",
-  },
-  {
-    id: 52,
-    name: "Chiwra Diet",
-    price: 90.00,
-    oldPrice: 121.00,
-    img:
-      "https://www.hungrytummy.co/cdn/shop/files/14.jpg?v=1714555842&width=720",
-  },
-  {
-    id: 53,
-    name: "Mint Makhana",
-    price: 180.00,
-    oldPrice: 229.00,
-    img:
-      "https://www.hungrytummy.co/cdn/shop/files/35.jpg?v=1714560769&width=720",
-  },
-];
+
+
+
 
 const NewArrivals = () => {
+
+  const dispatch = useDispatch();
+  const { products } = useSelector((state) => state.products);
+
+  useEffect(() => {
+    dispatch(fetchProducts("new_arrivals"));
+  }, [dispatch]);
+
+  
+
+
   const settings = {
     dots: true,
     infinite: true,
@@ -165,7 +139,7 @@ const NewArrivals = () => {
               </Box>
 
               <Typography variant="h6" fontWeight="bold" mb={1} mt={2}>
-               {product.title}
+               {product.name}
               </Typography>
               <Box
                 sx={{
@@ -183,7 +157,7 @@ const NewArrivals = () => {
                   color="text.secondary"
                   sx={{ textDecoration: "line-through" }}
                 >
-                ₹ {product.oldPrice}
+                ₹ {product.oldprice}
                 </Typography>
               </Box>
             </Box>
