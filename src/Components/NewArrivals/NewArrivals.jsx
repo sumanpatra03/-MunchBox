@@ -7,21 +7,13 @@ import "slick-carousel/slick/slick-theme.css";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../../Redux/Slice/ProductSlice";
 
-
-
-
-
 const NewArrivals = () => {
-
   const dispatch = useDispatch();
-  const { products } = useSelector((state) => state.products);
+  const { new_arrivals:products } = useSelector((state) => state.products);
 
   useEffect(() => {
-    dispatch(fetchProducts("new_arrivals"));
+    dispatch(fetchProducts({ endpoint: "new_arrivals" }));
   }, [dispatch]);
-
-  
-
 
   const settings = {
     dots: true,
@@ -139,7 +131,7 @@ const NewArrivals = () => {
               </Box>
 
               <Typography variant="h6" fontWeight="bold" mb={1} mt={2}>
-               {product.name}
+                {product.title}
               </Typography>
               <Box
                 sx={{
@@ -150,14 +142,14 @@ const NewArrivals = () => {
                 }}
               >
                 <Typography variant="body1" fontWeight="bold">
-                ₹ {product.price}
+                  ₹ {product.price}
                 </Typography>
                 <Typography
                   variant="body2"
                   color="text.secondary"
                   sx={{ textDecoration: "line-through" }}
                 >
-                ₹ {product.oldprice}
+                  ₹ {product.oldprice}
                 </Typography>
               </Box>
             </Box>

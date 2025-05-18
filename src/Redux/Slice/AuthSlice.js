@@ -137,76 +137,62 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { supabase } from "../../Supabase/Supabase";
 
- 
-
-
+// Add to cart
 export const addCart = createAsyncThunk("cart/addCart", async (item) => {
-  
-  const { data: cartItems, error } = await supabase
-    .from("cart") 
-    .select("*");
-
+  const { data: cartItems, error } = await supabase.from("cart").select("*");
   if (error) throw new Error(error.message);
 
-  
   const existingItem = cartItems.find((cartItem) => cartItem.id === item.id);
 
   if (existingItem) {
-    
     const { data, error: updateError } = await supabase
       .from("cart")
       .update({ qty: existingItem.qty + 1 })
-      .eq("id", existingItem.id);
-
+      .eq("id", existingItem.id)
+      .select();
     if (updateError) throw new Error(updateError.message);
-    return data[0]; 
+    return data[0];
   } else {
-    
     const { data, error: insertError } = await supabase
       .from("cart")
-      .insert([{ ...item, qty: 1 }]);
-
+      .insert([{ ...item, qty: 1 }])
+      .single();
     if (insertError) throw new Error(insertError.message);
-    return data[0]; 
-  }
-});
-
-
-export const fetchCart = createAsyncThunk("cart/fetchCart", async () => {
-  const { data, error } = await supabase.from("cart").select("*");
-
-  if (error) throw new Error(error.message);
-  return data; 
-});
-
-
-export const updateCart = createAsyncThunk(
-  "cart/updateCart",
-  async ({ id, qty }) => {
-    const { data, error } = await supabase
-      .from("cart")
-      .update({ qty })
-      .eq("id", id);
-
-    if (error) throw new Error(error.message);
     return data[0];
   }
-);
-
-
-export const deleteCart = createAsyncThunk("cart/deleteCart", async (id) => {
-  const { error } = await supabase.from("cart").delete().eq("id", id);
-
-  if (error) throw new Error(error.message);
-  return id; 
 });
 
+// Fetch cart
+export const fetchCart = createAsyncThunk("cart/fetchCart", async () => {
+  const { data, error } = await supabase.from("cart").select("*");
+  if (error) throw new Error(error.message);
+  return data;
+});
 
+// Update cart
+export const updateCart = createAsyncThunk("cart/updateCart", async ({ id, qty }) => {
+  const { data, error } = await supabase
+    .from("cart")
+    .update({ qty })
+    .eq("id", id)
+    .select();
+  if (error) throw new Error(error.message);
+  return data[0];
+});
+
+// Delete cart item
+export const deleteCart = createAsyncThunk("cart/deleteCart", async (id) => {
+  const { error } = await supabase.from("cart").delete().eq("id", id);
+  if (error) throw new Error(error.message);
+  return id;
+});
+
+// Helpers
 const calculateTotalPrice = (items) => {
   return items.reduce((total, item) => total + item.price * (item.qty || 1), 0);
 };
 
-
+// Initial state
 const initialState = {
   items: [],
   totalPrice: 0,
@@ -214,11 +200,11 @@ const initialState = {
   error: null,
 };
 
-
+// Slice
 const cartSlice = createSlice({
   name: "cart",
   initialState,
-
+  // reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(addCart.pending, (state) => {
@@ -226,7 +212,16 @@ const cartSlice = createSlice({
       })
       .addCase(addCart.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.items = [...state.items, action.payload];
+        const existingIndex = state.items.findIndex(
+          (item) => item.id === action.payload.id
+        );
+
+        if (existingIndex !== -1) {
+          state.items[existingIndex] = action.payload;
+        } else {
+          state.items.push(action.payload);
+        }
+
         state.totalPrice = calculateTotalPrice(state.items);
         state.error = null;
       })
@@ -252,11 +247,14 @@ const cartSlice = createSlice({
       })
       .addCase(updateCart.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.items = state.items.map((item) =>
-          item.id === action.payload.id
-            ? { ...item, qty: action.payload.qty }
-            : item
+        const updatedIndex = state.items.findIndex(
+          (item) => item.id === action.payload.id
         );
+
+        if (updatedIndex !== -1) {
+          state.items[updatedIndex] = action.payload;
+        }
+
         state.totalPrice = calculateTotalPrice(state.items);
         state.error = null;
       })
@@ -268,6 +266,7 @@ const cartSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(deleteCart.fulfilled, (state, action) => {
+        state.isLoading = false;
         state.items = state.items.filter((item) => item.id !== action.payload);
         state.totalPrice = calculateTotalPrice(state.items);
         state.error = null;
@@ -280,4 +279,3 @@ const cartSlice = createSlice({
 });
 
 export default cartSlice.reducer;
-

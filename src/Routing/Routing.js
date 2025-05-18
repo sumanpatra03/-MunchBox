@@ -7,6 +7,8 @@ import B2B from "../Pages/B2B/B2B";
 
 import CategoryPage from "../Pages/CategoryPage/CatagoryPage";
 import CartPage from "../Pages/Cart/CartPage";
+import Login from "../Pages/Login/Login";
+import SignUp from "../Pages/SignUp/SignUp";
 
 const Routing = () => {
   return (
@@ -18,6 +20,8 @@ const Routing = () => {
         <Route path="/b2b-orders" element={<B2B />} />
         <Route path="/category/:categoryName" element={<CategoryPage />} />
         <Route path="/cart" element={<CartPage />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<SignUp />} />
       </Routes>
     </BrowserRouter>
   );

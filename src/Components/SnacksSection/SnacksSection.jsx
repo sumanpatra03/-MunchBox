@@ -8,20 +8,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { addCart } from "../../Redux/Slice/AuthSlice";
 import { fetchProducts } from "../../Redux/Slice/ProductSlice";
 
-
-
 const SnacksSection = () => {
   const dispatch = useDispatch();
 
-  const { products } = useSelector((state) => state.products);
+  const { snacks_section: products } = useSelector((state) => state.products);
 
   useEffect(() => {
-    dispatch(fetchProducts("snacks_section"));
+    dispatch(fetchProducts({ endpoint: "snacks_section" }));
   }, [dispatch]);
 
   const handleAddToCart = (product) => {
     dispatch(addCart(product));
-    console.log(product)
+    console.log(product);
   };
 
   // console.log("Rosted Snacks Section",products)
@@ -138,9 +136,8 @@ const SnacksSection = () => {
                 </Box>
               </Box>
 
-              
               <Typography variant="h6" fontWeight="bold" mb={1} mt={2}>
-                {product.name}
+                {product.title}
               </Typography>
               <Box sx={{ display: "flex", justifyContent: "center", gap: 1 }}>
                 <Typography variant="body1" fontWeight="bold">

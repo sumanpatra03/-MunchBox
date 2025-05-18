@@ -26,7 +26,6 @@ import {
 } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 
-
 const menuItems = [
   { label: "Home", path: "/" },
   {
@@ -88,7 +87,6 @@ const Navbar = () => {
       }}
     >
       <Toolbar sx={{ justifyContent: "space-between" }}>
-        {/* Logo */}
         <Typography variant="h6" sx={{ fontWeight: "bold" }}>
           Munchbox
         </Typography>
@@ -106,7 +104,6 @@ const Navbar = () => {
                   sx={{
                     textTransform: "none",
                     color: "#000",
-                    // fontWeight: "bold",
                   }}
                 >
                   {label}
@@ -155,16 +152,18 @@ const Navbar = () => {
           <IconButton>
             <Search />
           </IconButton>
-          <IconButton>
-            <Person />
-          </IconButton>
+          <Link to="/login">
+            <IconButton>
+              <Person />
+            </IconButton>
+          </Link>
           <IconButton>
             <FavoriteBorder />
           </IconButton>
           <Link to="/cart">
-          <IconButton>
-            <ShoppingBag />
-          </IconButton>
+            <IconButton>
+              <ShoppingBag />
+            </IconButton>
           </Link>
 
           {isMobile && (

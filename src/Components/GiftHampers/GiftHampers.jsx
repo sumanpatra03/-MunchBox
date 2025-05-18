@@ -17,10 +17,11 @@ import { fetchProducts } from "../../Redux/Slice/ProductSlice";
 
 const GiftHampers = () => {
   const dispatch = useDispatch();
-  const { products, isLoading, error } = useSelector((state) => state.products);
+  const { gift_hampers: products } = useSelector((state) => state.products);
+
 
   useEffect(() => {
-    dispatch(fetchProducts("gift_hampers"));
+    dispatch(fetchProducts({ endpoint: "gift_hampers" }));
   }, [dispatch]);
 
   const handleAddToCart = (product) => {
@@ -61,13 +62,13 @@ const GiftHampers = () => {
     ],
   };
 
-  if (isLoading) {
-    return <div>loading......</div>;
-  }
+  // if (isLoading) {
+  //   return <div>loading......</div>;
+  // }
 
-  if (error) {
-    return <p>error.....</p>;
-  }
+  // if (error) {
+  //   return <p>error.....</p>;
+  // }
 
   return (
     <Box sx={{ textAlign: "center", py: 5 }}>
@@ -157,7 +158,7 @@ const GiftHampers = () => {
 
               <CardContent>
                 <Typography variant="h6" fontWeight="bold" mb={1}>
-                  {product.name}
+                  {product.title}
                 </Typography>
                 <Box
                   sx={{

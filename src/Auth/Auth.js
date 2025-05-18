@@ -1,8 +1,7 @@
 import { supabase } from "../Supabase/Supabase";
 
 export const auth = {
-  async signUp(email, password, fullname) {
-    // Check if the email already exists in the users table
+  async signUp(email, password, firstName, lastName) {
     const { data: existingUser, error: checkError } = await supabase
       .from("users")
       .select("id")
@@ -24,8 +23,7 @@ export const auth = {
       email,
       password,
       options: {
-        // emailRedirectTo: `${location.origin}/auth/callback`,
-        data: { fullname },
+        data: { firstName, lastName },
       },
     });
 
@@ -37,12 +35,13 @@ export const auth = {
       throw new Error("Failed to create user account.");
     }
 
-    // Insert user details into the "users" table
+    
     const { error: insertError } = await supabase.from("users").insert([
       {
         id: data.user.id,
         email,
-        fullname,
+        firstName,
+        lastName,
       },
     ]);
 
@@ -72,15 +71,5 @@ export const auth = {
     if (error) {
       throw new Error("Error logging out.");
     }
-  },
-
-  async getUser() {
-    const { data, error } = await supabase.auth.getUser();
-
-    if (error) {
-      throw new Error("Failed to get user.");
-    }
-
-    return data.user;
   },
 };

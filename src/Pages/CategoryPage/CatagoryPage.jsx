@@ -32,41 +32,23 @@ const CategoryPage = () => {
   const { categoryName } = useParams();
   const [items, setItems] = useState([]);
 
-  const { products } = useSelector((state) => state.products);
+  const allProducts = useSelector((state) => state.products[categoryName]);
 
   useEffect(() => {
-    dispatch(fetchProducts(categoryName));
+    if (categoryName) {
+      dispatch(fetchProducts({ endpoint: categoryName }));
+    }
   }, [dispatch, categoryName]);
   useEffect(() => {
-    if (products && products.length > 0) {
-      setItems(products); // Set the fetched products to the items state
+    if (allProducts) {
+      setItems(allProducts);
     }
-  }, [products]);
-
-  // const [priceRange, setPriceRange] = useState([0, 200]);
-
-  // useEffect(() => {
-  //   axiosInstance
-  //     .get(categoryName)
-  //     .then((res) => {
-  //       setItems(res.data);
-  //       console.log("Product fetched:", res.data);
-  //       toast.success("Products loaded successfully");
-  //     })
-  //     .catch((err) => {
-  //       console.error("Fetch data error", err);
-  //       toast.error("Failed to load products");
-  //     });
-  // }, [categoryName]);
-
-  // const handlePriceChange = (event, newValue) => {
-  //   setPriceRange(newValue);
-  // };
+  }, [allProducts]);
 
   const handleAddToCart = (product) => {
     dispatch(addCart(product));
     console.log("Adding to cart:", product);
-    toast.success(`${product.name} added to cart`);
+    toast.success(`${product.title} added to cart`);
   };
 
   return (

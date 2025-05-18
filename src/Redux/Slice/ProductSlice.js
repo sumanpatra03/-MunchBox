@@ -3,45 +3,46 @@ import { supabase } from "../../Supabase/Supabase";
 
 export const fetchProducts = createAsyncThunk(
   "products/fetchProducts",
-  async (endpoint) => {
+  async ({ endpoint }) => {
     try {
       const { data, error } = await supabase.from(endpoint).select("*");
       if (error) throw error;
-      //   console.log("Fetch Products Data", data);
-      return data;
+      return { endpoint, data };
     } catch (error) {
-      console.error(error);
       throw error;
     }
   }
 );
 
 const initialState = {
-  products: [],
+  season_collection:[],
+  snacks_section: [],
+  new_arrivals: [],
+  gift_hampers: [],
   isLoading: false,
   error: null,
 };
 
-const fetchSlice = createSlice({
+const productSlice = createSlice({
   name: "products",
   initialState,
+  // reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(fetchProducts.pending, (state) => {
         state.isLoading = true;
       })
       .addCase(fetchProducts.fulfilled, (state, action) => {
-        // console.log("Data fetch success", action.payload);
+        const { endpoint, data } = action.payload;
         state.isLoading = false;
-        state.products = action.payload;
+        state[endpoint] = data;
         state.error = null;
       })
       .addCase(fetchProducts.rejected, (state, action) => {
-        console.log("Data fetch failed", action.error.message);
         state.isLoading = false;
         state.error = action.error.message;
       });
   },
 });
 
-export default fetchSlice.reducer;
+export default productSlice.reducer;

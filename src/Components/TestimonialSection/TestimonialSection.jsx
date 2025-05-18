@@ -60,22 +60,19 @@ const TestimonialSection = () => {
                 flexDirection: "column",
                 justifyContent: "center",
                 alignItems: "center",
-                margin: "0 -10px", 
+                margin: "0 -10px",
               }}
             >
-              {/* Star Rating */}
               <Box sx={{ mb: 2, display: "flex", justifyContent: "center" }}>
                 {[...Array(5)].map((_, i) => (
                   <StarIcon key={i} sx={{ color: "#F4B400" }} />
                 ))}
               </Box>
 
-              {/* Review Text */}
               <Typography variant="body1" color="text.secondary" mb={2}>
                 {testimonial.review}
               </Typography>
 
-              {/* Reviewer Name */}
               <Typography variant="body1" fontWeight="bold">
                 {testimonial.name}
               </Typography>
