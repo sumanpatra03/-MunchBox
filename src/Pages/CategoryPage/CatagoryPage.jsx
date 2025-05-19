@@ -280,7 +280,7 @@ const CategoryPage = () => {
                           display: "flex",
                           alignItems: "center",
                           justifyContent: "space-between",
-                          mt: 1,
+                          // mt: 1,
                         }}
                       >
                         <Stack direction="row" spacing={1} alignItems="center">
