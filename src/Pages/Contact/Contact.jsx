@@ -21,7 +21,7 @@ const Contact = () => {
       <Navbar />
       <Container>
         <Box sx={{ maxWidth: "1500px", mx: "auto", px: 3, py: 6 }}>
-          <Typography variant="h4" sx={{ mt: 1, mb: 3 }}>
+          <Typography variant="h4" sx={{ mt: 1, mb: 3,textAlign:"center" }}>
             Contact-Us
           </Typography>
           <Box
