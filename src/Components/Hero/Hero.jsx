@@ -1,6 +1,5 @@
-import React from "react";
 import Carousel from "react-material-ui-carousel";
-import { Paper, Box } from "@mui/material";
+import { Paper, Box, useTheme, useMediaQuery } from "@mui/material";
 
 const images = [
   {
@@ -18,10 +17,13 @@ const images = [
 ];
 
 const Hero = () => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
   return (
-    <Box sx={{ maxWidth: "1500px", margin: "auto" }}>
+    <Box sx={{ maxWidth: "1500px", width: "100%", mx: "auto", px: 1 }}>
       <Carousel
-        autoPlay={true}
+        autoPlay
         animation="fade"
         navButtonsAlwaysVisible
         indicatorContainerProps={{
@@ -31,11 +33,21 @@ const Hero = () => {
         }}
       >
         {images.map((item, index) => (
-          <Paper key={index} elevation={3}>
+          <Paper
+            key={index}
+            elevation={3}
+            sx={{ borderRadius: 2, overflow: "hidden" }}
+          >
             <Box
               component="img"
               src={item.src}
-              sx={{ width: "100%", height: "auto", borderRadius: "8px" }}
+              alt={`carousel-image-${index}`}
+              sx={{
+                width: "100%",
+                height: isMobile ? "200px" : "450px",
+                objectFit: "cover",
+                transition: "all 0.3s ease",
+              }}
             />
           </Paper>
         ))}

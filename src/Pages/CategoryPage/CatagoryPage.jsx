@@ -110,7 +110,7 @@ const CategoryPage = () => {
           <Typography
             variant={isSmDown ? "h5" : "h4"}
             fontWeight={700}
-            sx={{ mb: 1, textTransform: "capitalize" }}
+            sx={{ mb: 1, textTransform: "capitalize",  textAlign:"center"}}
           >
             {categoryName.replace(/-/g, " ")}
           </Typography>

@@ -34,7 +34,7 @@ const CartPage = () => {
     <>
       <Navbar />
       <Box sx={{ maxWidth: "1100px", mx: "auto", py: 5 }}>
-        <Typography variant="h6" color="textSecondary" sx={{ mb: 3, mt: 1 }}>
+        <Typography variant="h6" color="textSecondary" sx={{ mb: 3, mt: 1 ,textAlign:"center"}}>
           Cart
         </Typography>
         <Box

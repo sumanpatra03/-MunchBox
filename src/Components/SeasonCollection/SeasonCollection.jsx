@@ -8,16 +8,14 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../../Redux/Slice/ProductSlice";
 
-
-
-//
-
 const SeasonCollection = () => {
-  const dispatch = useDispatch()
-   const { season_collection:products } = useSelector((state) => state.products);
-     useEffect(() => {
-       dispatch(fetchProducts({ endpoint: "season_collection" }));
-     }, [dispatch]);
+  const dispatch = useDispatch();
+  const { season_collection: products } = useSelector(
+    (state) => state.products
+  );
+  useEffect(() => {
+    dispatch(fetchProducts({ endpoint: "season_collection" }));
+  }, [dispatch]);
   const navigate = useNavigate();
 
   const settings = {
@@ -47,7 +45,7 @@ const SeasonCollection = () => {
               key={index}
               sx={{
                 padding: 2,
-                background: "#f0f0c9",
+                // background: "#f0f0c9",
                 borderRadius: "10px",
                 textAlign: "center",
                 position: "relative",
@@ -64,13 +62,16 @@ const SeasonCollection = () => {
                   mb: 2,
                 }}
               ></Box>
-              <Box sx={{ position: "absolute", bottom: 70, right: 250 }}>
+              <Box sx = {{display:"flex", justifyContent:"space-between"}}>
+              <Box sx={{ position: "absolute", bottom: 70, left: "15%",  }}>
+
                 <Typography fontWeight="bold">{product.title}</Typography>
 
                 <Typography variant="body2" color="text.secondary">
                   {product.items}
                 </Typography>
               </Box>
+              <Box>
 
               <IconButton
                 onClick={() => navigate(`/category${product.link}`)}
@@ -91,6 +92,8 @@ const SeasonCollection = () => {
               >
                 <ArrowForwardIcon />
               </IconButton>
+              </Box>
+              </Box>
             </Box>
           ))}
         </Slider>

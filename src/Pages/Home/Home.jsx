@@ -1,4 +1,4 @@
-import React from "react";
+import { Box } from "@mui/material";
 import Navbar from "../../Components/Navbar/Navbar";
 import Hero from "../../Components/Hero/Hero";
 import SeasonCollection from "../../Components/SeasonCollection/SeasonCollection";
@@ -12,7 +12,7 @@ import TestimonialSection from "../../Components/TestimonialSection/TestimonialS
 
 const Home = () => {
   return (
-    <div>
+    <Box>
       <Navbar />
       <Hero />
       <SeasonCollection />
@@ -23,7 +23,7 @@ const Home = () => {
       <FeatureSection />
       <TestimonialSection />
       <Footer />
-    </div>
+    </Box>
   );
 };
 
