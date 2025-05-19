@@ -169,7 +169,7 @@ export const fetchCart = createAsyncThunk("cart/fetchCart", async () => {
   return data;
 });
 
-// Update cart
+
 export const updateCart = createAsyncThunk("cart/updateCart", async ({ id, qty }) => {
   const { data, error } = await supabase
     .from("cart")

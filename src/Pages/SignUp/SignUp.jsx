@@ -11,13 +11,17 @@ import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import { useForm } from "react-hook-form";
 import Navbar from "../../Components/Navbar/Navbar";
 import Footer from "../../Components/Footer/Footer";
-import { auth } from "../../Auth/Auth";
+
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useDispatch } from "react-redux";
+import { signUpUser } from "../../Redux/Slice/userSlice";
 
 const SignUp = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const {
     register,
     handleSubmit,
@@ -28,14 +32,16 @@ const SignUp = () => {
     const { firstName, lastName, email, password } = data;
     // console.log("Registration Data:", data);
     try {
-      await auth.signUp(email, password, firstName, lastName);
+      await dispatch(
+        signUpUser({ firstName, lastName, email, password })
+      ).unwrap();
       toast.success("Registered successfully!");
       setTimeout(() => {
         navigate("/login");
       }, 1000);
     } catch (error) {
-   toast.error(error?.message || "Registration failed");
-    console.log(error)
+      toast.error(error?.message || "Registration failed");
+      console.log(error);
     }
   };
 

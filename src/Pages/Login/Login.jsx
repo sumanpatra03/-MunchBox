@@ -13,35 +13,33 @@ import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import { useForm } from "react-hook-form";
 import Navbar from "../../Components/Navbar/Navbar";
 import Footer from "../../Components/Footer/Footer";
-import { auth } from "../../Auth/Auth";
+
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { signInUser } from "../../Redux/Slice/userSlice";
 
 const Login = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const { register, handleSubmit, formState } = useForm();
   const { errors } = formState;
 
-  const submitHandler = async (data) => {
-    const { email, password } = data;
-
+  const submitHandler = async ({ email, password }) => {
     try {
-      await auth.signIn(email, password);
+      await dispatch(signInUser({ email, password })).unwrap();
       toast.success("Login successful!");
       setTimeout(() => {
         navigate("/");
       }, 1000);
     } catch (error) {
-      const errorMessage =
-        error?.message || "Invalid email or password. Please try again.";
-      toast.error(errorMessage);
-      console.error(error);
+      toast.error(
+        error?.message || "Invalid email or password. Please try again."
+      );
+      console.error("Login error:", error);
     }
-
-    console.log("Form Submitted", data);
   };
-
   return (
     <>
       <Navbar />

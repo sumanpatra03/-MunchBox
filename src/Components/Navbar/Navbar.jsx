@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   AppBar,
   Toolbar,
@@ -24,7 +24,10 @@ import {
   Menu as MenuIcon,
   Close,
 } from "@mui/icons-material";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCurrentUser, signOutUser } from "../../Redux/Slice/userSlice";
 
 const menuItems = [
   { label: "Home", path: "/" },
@@ -59,7 +62,16 @@ const Navbar = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [openMenu, setOpenMenu] = useState(null);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [userAnchorEl, setUserAnchorEl] = useState(null);
+
   const isMobile = useMediaQuery("(max-width:900px)");
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user.user);
+
+  useEffect(() => {
+    dispatch(fetchCurrentUser());
+  }, [dispatch]);
 
   const handleMenuOpen = (event, menuLabel) => {
     setAnchorEl(event.currentTarget);
@@ -75,6 +87,20 @@ const Navbar = () => {
     setMobileOpen(open);
   };
 
+  const handleUserMenuOpen = (event) => {
+    setUserAnchorEl(event.currentTarget);
+  };
+
+  const handleUserMenuClose = () => {
+    setUserAnchorEl(null);
+  };
+
+  const handleLogout = async () => {
+    await dispatch(signOutUser()).unwrap();
+    handleUserMenuClose();
+    navigate("/login");
+  };
+
   return (
     <AppBar
       position="static"
@@ -83,7 +109,6 @@ const Navbar = () => {
         background: "#fff",
         color: "#000",
         boxShadow: "none",
-        // fontFamily: "Poppins, sans-serif",
       }}
     >
       <Toolbar sx={{ justifyContent: "space-between" }}>
@@ -108,7 +133,7 @@ const Navbar = () => {
                 >
                   {label}
                 </Button>
-                {items && items.length > 0 && (
+                {items && (
                   <>
                     <IconButton
                       size="small"
@@ -148,15 +173,36 @@ const Navbar = () => {
           </Box>
         )}
 
-        <Box sx={{ display: "flex", gap: 2 }}>
+        <Box sx={{ display: "flex", gap: 2, alignItems: "center" }}>
           <IconButton>
             <Search />
           </IconButton>
-          <Link to="/login">
-            <IconButton>
-              <Person />
-            </IconButton>
-          </Link>
+
+          {user ? (
+            <>
+              <Button
+                onClick={handleUserMenuOpen}
+                startIcon={<Person />}
+                sx={{ textTransform: "none", color: "#000" }}
+              >
+                {user.user_metadata?.firstName || user.email}
+              </Button>
+              <Menu
+                anchorEl={userAnchorEl}
+                open={Boolean(userAnchorEl)}
+                onClose={handleUserMenuClose}
+              >
+                <MenuItem onClick={handleLogout}>Logout</MenuItem>
+              </Menu>
+            </>
+          ) : (
+            <Link to="/login">
+              <IconButton>
+                <Person />
+              </IconButton>
+            </Link>
+          )}
+
           <IconButton>
             <FavoriteBorder />
           </IconButton>

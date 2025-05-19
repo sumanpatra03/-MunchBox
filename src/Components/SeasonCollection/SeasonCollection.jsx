@@ -8,38 +8,9 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../../Redux/Slice/ProductSlice";
 
-// const products = [
-//   {
-//     title: "Diet Namkeen",
-//     items: "13 items",
-//     image: "https://www.hungrytummy.co/cdn/shop/files/Frame_9.webp?v=1728046056",
-//     link: "/diet_namkeen",
-//   },
-//   {
-//     title: "Biscuits",
-//     items: "25 items",
-//     image: "https://www.hungrytummy.co/cdn/shop/files/Frame_88.webp?v=1728046056",
-//     link: "/biscuits",
-//   },
-//   {
-//     title: "Diet Chips",
-//     items: "9 items",
-//     image: "https://www.hungrytummy.co/cdn/shop/files/Frame_4.webp?v=1728046062",
-//     link: "/diet_chips",
-//   },
-//   {
-//     title: "Namkeen",
-//     items: "18 items",
-//     image: "https://www.hungrytummy.co/cdn/shop/files/Frame_7_2.webp?v=1728046057",
-//     link: "/namkeen",
-//   },
-//   {
-//     title: "Makhana",
-//     items: "3 items",
-//     image: "https://www.hungrytummy.co/cdn/shop/files/Frame_92.webp?v=1728046056",
-//     link: "/makhana",
-//   },
-// ];
+
+
+//
 
 const SeasonCollection = () => {
   const dispatch = useDispatch()

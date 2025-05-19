@@ -14,18 +14,28 @@ import { FavoriteBorder, Visibility } from "@mui/icons-material";
 import { useDispatch, useSelector } from "react-redux";
 import { addCart } from "../../Redux/Slice/AuthSlice";
 import { fetchProducts } from "../../Redux/Slice/ProductSlice";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
 
 const GiftHampers = () => {
+  const navigate = useNavigate()
   const dispatch = useDispatch();
   const { gift_hampers: products } = useSelector((state) => state.products);
-
+   const user = useSelector((state) => state.user.user);
 
   useEffect(() => {
     dispatch(fetchProducts({ endpoint: "gift_hampers" }));
   }, [dispatch]);
 
   const handleAddToCart = (product) => {
-    dispatch(addCart(product));
+    if (!user) {
+      toast.error("Please login to add products to the cart.");
+      setTimeout(() => navigate("/login"), 2000);
+    } else {
+      dispatch(addCart(product));
+      toast.success("Product added to cart");
+    }
   };
 
   // console.log("Gift Hampers Data",products)
@@ -199,6 +209,11 @@ const GiftHampers = () => {
           ))}
         </Slider>
       </Box>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+      />
     </Box>
   );
 };

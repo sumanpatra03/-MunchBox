@@ -7,20 +7,30 @@ import "slick-carousel/slick/slick-theme.css";
 import { useDispatch, useSelector } from "react-redux";
 import { addCart } from "../../Redux/Slice/AuthSlice";
 import { fetchProducts } from "../../Redux/Slice/ProductSlice";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
 
 const SnacksSection = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate()
 
   const { snacks_section: products } = useSelector((state) => state.products);
+     const user = useSelector((state) => state.user.user);
 
   useEffect(() => {
     dispatch(fetchProducts({ endpoint: "snacks_section" }));
   }, [dispatch]);
 
   const handleAddToCart = (product) => {
-    dispatch(addCart(product));
-    console.log(product);
-  };
+     if (!user) {
+       toast.error("Please login to add products to the cart.");
+       setTimeout(() => navigate("/login"), 2000);
+     } else {
+       dispatch(addCart(product));
+       toast.success("Product added to cart");
+     }
+   };
 
   // console.log("Rosted Snacks Section",products)
 
@@ -155,6 +165,11 @@ const SnacksSection = () => {
           ))}
         </Slider>
       </Box>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+      />
     </Box>
   );
 };
