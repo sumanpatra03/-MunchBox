@@ -33,7 +33,7 @@ const menuItems = [
   { label: "Home", path: "/" },
   {
     label: "Shop By Categories",
-    path: "/categories",
+
     items: [
       { label: "Biscuits", path: "/category/biscuits" },
       { label: "Diet Namkeen", path: "/category/diet_namkeen" },

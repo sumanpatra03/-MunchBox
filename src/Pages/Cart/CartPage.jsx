@@ -21,24 +21,46 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchCart, deleteCart, updateCart } from "../../Redux/Slice/AuthSlice";
 import Navbar from "../../Components/Navbar/Navbar";
 import Footer from "../../Components/Footer/Footer";
+import { useNavigate } from "react-router-dom";
 
 const CartPage = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { items, totalPrice } = useSelector((state) => state.cart);
+  const user = useSelector((state) => state.user.user);
 
   useEffect(() => {
-    dispatch(fetchCart());
-  }, [dispatch]);
+    if (user) {
+      dispatch(fetchCart());
+    }
+  }, [dispatch, user]);
+
+  if (!user) {
+    return (
+      <>
+        <Navbar />
+        <Box sx={{ textAlign: "center", py: 10 }}>
+          <Typography variant="h5" fontWeight="bold" mb={2}>
+            Please login to view your cart
+          </Typography>
+          <Button
+            variant="contained"
+            sx={{ bgcolor: "black", color: "white", "&:hover": { bgcolor: "black" } }}
+            onClick={() => navigate("/login")}
+          >
+            Login
+          </Button>
+        </Box>
+        <Footer />
+      </>
+    );
+  }
 
   return (
     <>
       <Navbar />
       <Box sx={{ maxWidth: "1100px", mx: "auto", py: 5, px: { xs: 2, md: 3 } }}>
-        <Typography
-          variant="h6"
-          color="textSecondary"
-          sx={{ mb: 3, mt: 1, textAlign: "center" }}
-        >
+        <Typography variant="h4" sx={{ mb: 3, mt: 1, textAlign: "center" }}>
           Cart
         </Typography>
 

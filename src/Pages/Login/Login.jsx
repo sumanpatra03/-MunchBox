@@ -44,7 +44,7 @@ const Login = () => {
     <>
       <Navbar />
       <Container maxWidth="md" sx={{ py: 8 }}>
-        <Typography variant="h4" sx={{ mt: 1, mb: 3 }}>
+        <Typography variant="h4" sx={{ mt: 1, mb: 3,textAlign:"center" }}>
           Log In
         </Typography>
         <Box
