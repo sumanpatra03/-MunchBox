@@ -19,32 +19,41 @@ import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { signInUser } from "../../Redux/Slice/userSlice";
+import { useState } from "react";
+
 
 const Login = () => {
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { register, handleSubmit, formState } = useForm();
   const { errors } = formState;
 
   const submitHandler = async ({ email, password }) => {
+    setLoading(true);
     try {
-      await dispatch(signInUser({ email, password })).unwrap();
+      // Wait at least 2 seconds to simulate loading
+      const loginPromise = dispatch(signInUser({ email, password })).unwrap();
+      const delay = new Promise((res) => setTimeout(res, 2000));
+      await Promise.all([loginPromise, delay]);
+
       toast.success("Login successful!");
-      setTimeout(() => {
-        navigate("/");
-      }, 1000);
+      navigate("/");
     } catch (error) {
       toast.error(
         error?.message || "Invalid email or password. Please try again."
       );
       console.error("Login error:", error);
+    } finally {
+      setLoading(false);
     }
   };
+
   return (
     <>
       <Navbar />
       <Container maxWidth="md" sx={{ py: 8 }}>
-        <Typography variant="h4" sx={{ mt: 1, mb: 3,textAlign:"center" }}>
+        <Typography variant="h4" sx={{ mt: 1, mb: 3, textAlign: "center" }}>
           Log In
         </Typography>
         <Box
@@ -106,7 +115,7 @@ const Login = () => {
                 type="submit"
                 variant="contained"
                 fullWidth
-                disabled={formState.isSubmitting}
+                disabled={loading}
                 sx={{
                   backgroundColor: "#000",
                   "&:hover": { backgroundColor: "#333" },
@@ -114,13 +123,21 @@ const Login = () => {
                   borderRadius: 1,
                   py: 1.5,
                   fontWeight: 600,
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  gap: 1.2,
+                  textTransform: "none",
                 }}
               >
-                {formState.isSubmitting ? (
-                  <CircularProgress size={24} sx={{ color: "black" }} />
-                ) : (
-                  "Sign In"
+                {loading && (
+                  <CircularProgress
+                    size={20}
+                    sx={{ color: "white" }}
+                    thickness={5}
+                  />
                 )}
+                {loading ? "Logging in..." : "Login"}
               </Button>
             </form>
           </Grid>

@@ -2,6 +2,7 @@ import {
   Box,
   Breadcrumbs,
   Button,
+  CircularProgress,
   Container,
   Link,
   TextField,
@@ -17,8 +18,11 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useDispatch } from "react-redux";
 import { signUpUser } from "../../Redux/Slice/userSlice";
+import { useState } from "react";
+
 
 const SignUp = () => {
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -30,11 +34,15 @@ const SignUp = () => {
 
   const onSubmit = async (data) => {
     const { firstName, lastName, email, password } = data;
-    // console.log("Registration Data:", data);
+    setLoading(true);
     try {
-      await dispatch(
+      // Wait at least 2 seconds
+      const signUpPromise = dispatch(
         signUpUser({ firstName, lastName, email, password })
       ).unwrap();
+      const delay = new Promise((res) => setTimeout(res, 2000));
+      await Promise.all([signUpPromise, delay]);
+
       toast.success("Registered successfully!");
       setTimeout(() => {
         navigate("/login");
@@ -42,6 +50,8 @@ const SignUp = () => {
     } catch (error) {
       toast.error(error?.message || "Registration failed");
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -113,16 +123,30 @@ const SignUp = () => {
           <Button
             type="submit"
             variant="contained"
+            disabled={loading}
             sx={{
               backgroundColor: "#000",
               "&:hover": { backgroundColor: "#333" },
               color: "#fff",
               py: 1.5,
               fontWeight: 600,
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              gap: 1.2,
+              textTransform: "none",
             }}
           >
-            Create Account
+            {loading && (
+              <CircularProgress
+                size={20}
+                sx={{ color: "white" }}
+                thickness={5}
+              />
+            )}
+            {loading ? "Creating..." : "Create Account"}
           </Button>
+
           <Typography variant="body2" align="center" mt={2}>
             Already have an account?{" "}
             <Link
