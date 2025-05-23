@@ -147,7 +147,7 @@ const SnacksSection = () => {
               </Box>
 
               <Typography variant="h6" fontWeight="bold" mb={1} mt={2}>
-                {product.title}
+                {product.name}
               </Typography>
               <Box sx={{ display: "flex", justifyContent: "center", gap: 1 }}>
                 <Typography variant="body1" fontWeight="bold">

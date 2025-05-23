@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import {
   Box,
   Typography,
@@ -45,7 +45,11 @@ const CartPage = () => {
           </Typography>
           <Button
             variant="contained"
-            sx={{ bgcolor: "black", color: "white", "&:hover": { bgcolor: "black" } }}
+            sx={{
+              bgcolor: "black",
+              color: "white",
+              "&:hover": { bgcolor: "black" },
+            }}
             onClick={() => navigate("/login")}
           >
             Login

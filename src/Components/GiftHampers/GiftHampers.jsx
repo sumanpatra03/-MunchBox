@@ -168,7 +168,7 @@ const GiftHampers = () => {
 
               <CardContent>
                 <Typography variant="h6" fontWeight="bold" mb={1}>
-                  {product.title}
+                  {product.name}
                 </Typography>
                 <Box
                   sx={{

@@ -13,9 +13,7 @@ import {
   Link,
   IconButton,
   Grid,
-
   Tooltip,
-  
   Stack,
   useTheme,
   useMediaQuery,
@@ -35,6 +33,7 @@ import { addCart } from "../../Redux/Slice/AuthSlice";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { fetchProducts } from "../../Redux/Slice/ProductSlice";
+import Loading from "../../Components/Loading/Loading";
 
 const CategoryPage = () => {
   const navigate = useNavigate();
@@ -51,6 +50,8 @@ const CategoryPage = () => {
   const [wishlist, setWishlist] = useState([]);
 
   const allProducts = useSelector((state) => state.products[categoryName]);
+  const loading = useSelector((state) => state.products.loading);
+
   const user = useSelector((state) => state.user.user);
 
   const theme = useTheme();
@@ -90,6 +91,7 @@ const CategoryPage = () => {
       setTimeout(() => navigate("/login"), 2000);
     } else {
       dispatch(addCart(product));
+      console.log("Dispatching addCart for:", product);
       toast.success("Product added to cart");
     }
   };
@@ -102,6 +104,8 @@ const CategoryPage = () => {
     );
   };
 
+  if (loading || !allProducts) return <Loading />;
+
   return (
     <>
       <Navbar />
@@ -110,7 +114,7 @@ const CategoryPage = () => {
           <Typography
             variant={isSmDown ? "h5" : "h4"}
             fontWeight={700}
-            sx={{ mb: 1, textTransform: "capitalize",  textAlign:"center"}}
+            sx={{ mb: 1, textTransform: "capitalize", textAlign: "center" }}
           >
             {categoryName.replace(/-/g, " ")}
           </Typography>
@@ -200,11 +204,8 @@ const CategoryPage = () => {
                 </Typography>
               </AccordionDetails>
             </Accordion>
-
-            {/* Add more filters as needed */}
           </Grid>
 
-          {/* Products Grid */}
           <Grid item xs={12} md={9}>
             <Grid container spacing={3}>
               {filteredItems.length === 0 && (
@@ -242,7 +243,9 @@ const CategoryPage = () => {
                         borderTopLeftRadius: 12,
                         borderTopRightRadius: 12,
                       }}
-                      // onClick={() => navigate(`/product/${product.id}`)}
+                      onClick={() =>
+                        navigate(`/category/${categoryName}/${product.id}`)
+                      }
                     >
                       <Box
                         component="img"
@@ -342,7 +345,9 @@ const CategoryPage = () => {
                               size="small"
                               onClick={(e) => {
                                 e.stopPropagation();
-                                navigate(`/product/${product.id}`);
+                                navigate(
+                                  `/category/${categoryName}/${product.id}`
+                                );
                               }}
                             >
                               <Visibility />

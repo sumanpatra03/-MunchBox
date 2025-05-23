@@ -3,11 +3,15 @@ import { supabase } from "../../Supabase/Supabase";
 
 export const fetchProducts = createAsyncThunk(
   "products/fetchProducts",
-  async ({ endpoint }) => {
+  async ({ endpoint, id }) => {
     try {
-      const { data, error } = await supabase.from(endpoint).select("*");
+      const query = supabase.from(endpoint).select("*");
+
+      if (id) query.eq("id", id); 
+
+      const { data, error } = await query;
       if (error) throw error;
-      return { endpoint, data };
+      return { endpoint, data, id };
     } catch (error) {
       throw error;
     }
@@ -15,10 +19,11 @@ export const fetchProducts = createAsyncThunk(
 );
 
 const initialState = {
-  season_collection:[],
+  season_collection: [],
   snacks_section: [],
   new_arrivals: [],
   gift_hampers: [],
+  singleProduct: null,
   isLoading: false,
   error: null,
 };
@@ -33,11 +38,16 @@ const productSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(fetchProducts.fulfilled, (state, action) => {
-        const { endpoint, data } = action.payload;
+        const { endpoint, data, id } = action.payload;
         state.isLoading = false;
-        state[endpoint] = data;
         state.error = null;
+        if (id) {
+          state.singleProduct = data[0] || null;
+        } else {
+          state[endpoint] = data;
+        }
       })
+
       .addCase(fetchProducts.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.error.message;
