@@ -8,7 +8,6 @@ import {
   Typography,
   Button,
   IconButton,
-
   Rating,
   Paper,
   Stack,
@@ -44,7 +43,7 @@ const SinglePage = () => {
   const product = useSelector((state) => state.products.singleProduct);
   const user = useSelector((state) => state.user.user);
 
-//   const [snackbarOpen, setSnackbarOpen] = useState(false);
+  //   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [wishlisted, setWishlisted] = useState(false);
   const [fadeIn, setFadeIn] = useState(false);
 
@@ -62,15 +61,17 @@ const SinglePage = () => {
     } else {
       dispatch(addCart(product));
       toast.success("Product added to cart");
-    //   setSnackbarOpen(true);
+      //   setSnackbarOpen(true);
     }
   };
 
-
-
   const toggleWishlist = () => {
-    setWishlisted(!wishlisted);
-    toast.info(wishlisted ? "Removed from wishlist" : "Added to wishlist");
+    if (!user) {
+      toast.error("Please login to add products to wishlist.");
+    } else {
+      setWishlisted(!wishlisted);
+      toast.info(wishlisted ? "Removed from wishlist" : "Added to wishlist");
+    }
   };
 
   const handleShare = () => {
@@ -219,8 +220,6 @@ const SinglePage = () => {
             </Grid>
           </Grid>
         </Fade>
-
-       
       </Container>
       <ToastContainer position="top-right" autoClose={3000} />
       <Footer />
